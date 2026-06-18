@@ -4,9 +4,17 @@ import random
 #lists of words
 words = ["game","hangman","play","indoor","won","loss"]
 
-# Pick a random word
+# pick a random word
 word = random.choice(words)
 
-#Create a list of underscores for the word
+# create a list of underscores for the word
 display = ["_"] * len(word)
+
+# track wrong guesses
+wrong_guesses = 0
+max_wrong = 6
+
+# track guessed letters
+guessed_letters = []
+
 
