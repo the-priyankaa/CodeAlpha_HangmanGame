@@ -15,8 +15,13 @@ wrong_guesses = 0
 max_wrong = 6
 
 # track guessed letters
-guessed_letters = []
+guessed_letters = set()
 
-# Use loop
-while wrong_guesses <= max_wrong:
-     
+#use function 
+def start_game():
+    # Use loop
+    while wrong_guesses <= max_wrong:
+        guess = input("Guess a letter: ").lower()
+
+        # Add to guessed letters
+        guessed_letters.add(guess) 
