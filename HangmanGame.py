@@ -18,3 +18,6 @@ max_wrong = 6
 guessed_letters = []
 
 
+# Use loop
+while wrong_guesses <= max_wrong:
+    
