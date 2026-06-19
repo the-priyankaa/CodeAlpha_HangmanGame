@@ -26,6 +26,17 @@ def start_game():
     while wrong_guesses < max_wrong:
         guess = input("Guess a letter: ").lower()
 
+        #check it is an alphabate or not
+        if not guess.isalpha():
+            print("Invalid input")
+            wrong_guesses = wrong_guesses +1
+            continue
+
+        #check it is a repeated guess or not
+        if guess in guessed_letters:
+            print("OOPS! YOU ALREADY ENTER THIS!")  
+            continue
+
         #check it is a right guess or not
         w = list(word)
         
@@ -36,13 +47,12 @@ def start_game():
             for j in range(len(w)):
                 if w[j] == guess:
                     display[j] = guess
-        elif guess == guessed_letters:
-            print("OOPS! YOU ALREADY ENTER THIS!")            
+                  
         else:
             print("OPPS! WRONG GUESS")
             wrong_guesses = wrong_guesses +1
-        # Add to guessed letters
+        # Add to guessed letters 
         guessed_letters.add(guess) 
 
 start_game()
-print(word)
+print(word) 
