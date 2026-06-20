@@ -48,20 +48,6 @@ while wrong_guesses < max_wrong :
     #check it is an alphabate or not
     if not guess.isalpha():
         print("Invalid input")
-        wrong_guesses = wrong_guesses +1
-        if wrong_guesses <= 5:
-            while True:
-                h=input("Do you want any hint(Y/N):").lower()
-                if h == "y":
-                    hint()
-                    break
-                elif h == "n":
-                    ("Play your own!!")
-                    break
-                else:
-                    print("SORRY! Wrong input!")  
-
-                continue
 
     #check it is a repeated guess or not
     if guess in guessed_letters:
@@ -90,7 +76,7 @@ while wrong_guesses < max_wrong :
                     hint()
                     break
                 elif h == "n":
-                    ("Play your own!!")
+                    print("Play your own!!")
                     break
                 else:
                     print("SORRY! Wrong input!")
