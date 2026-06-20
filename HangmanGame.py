@@ -26,13 +26,6 @@ max_wrong = 6
 # track guessed letters
 guessed_letters = set()
 
-#function for hint
-def hint():
-
-    # Declare as global
-    global display
-    print(" ".join(display))
-
 #start game 
 # Use loop
 while wrong_guesses < max_wrong :
@@ -73,8 +66,8 @@ while wrong_guesses < max_wrong :
             while True:
                 h=input("Do you want any hint(Y/N):").lower()
                 if h == "y":
-                    hint()
-                    break
+                   print(" ".join(display))
+                   break
                 elif h == "n":
                     print("Play your own!!")
                     break
@@ -88,4 +81,4 @@ while wrong_guesses < max_wrong :
     # Check if player lost
     if wrong_guesses == max_wrong:
         print("GAME OVER! You lost!")
-        print(f"The word is {word}") 
+        print(f"The word is {word}")
