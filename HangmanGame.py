@@ -29,8 +29,8 @@ guessed_letters = set()
 #function for hint
 def hint():
     # Declare as global
-    global wrong_guesses, display, guessed_letters 
-
+    global display
+    print(" ".join(display))
 
 #use function for game
 def start_game():
@@ -56,7 +56,7 @@ def start_game():
                 while True:
                     h=input("Do you want any hint(Y/N):").lower()
                     if h == "y":
-                        print()
+                        hint()
                         break
                     elif h == "n":
                         ("Play your own!!")
@@ -90,7 +90,7 @@ def start_game():
                 while True:
                     h=input("Do you want any hint(Y/N):").lower()
                     if h == "y":
-                        print()
+                        hint()
                         break
                     elif h == "n":
                         ("Play your own!!")
@@ -108,5 +108,4 @@ def start_game():
             print(f"The word is {word}") 
             continue
        
-
 start_game()
