@@ -28,84 +28,78 @@ guessed_letters = set()
 
 #function for hint
 def hint():
+
     # Declare as global
     global display
     print(" ".join(display))
 
-#use function for game
-def start_game():
-    # Declare as global
-    global wrong_guesses, display, guessed_letters  
+#start game 
+# Use loop
+while wrong_guesses < max_wrong :
 
-    # Use loop
-    while wrong_guesses < max_wrong :
+    # Check if player won
+    if "_" not in display:
+        print(" YOU WON!")
+        print(f"The word is {word}") 
+        break
 
-        # Check if player won
-        if "_" not in display:
-            print(" YOU WON!")
-            print(f"The word is {word}") 
-            break
+    guess = input("Guess a letter: ").lower()
 
-        guess = input("Guess a letter: ").lower()
+    #check it is an alphabate or not
+    if not guess.isalpha():
+        print("Invalid input")
+        wrong_guesses = wrong_guesses +1
+        if wrong_guesses <= 5:
+            while True:
+                h=input("Do you want any hint(Y/N):").lower()
+                if h == "y":
+                    hint()
+                    break
+                elif h == "n":
+                    ("Play your own!!")
+                    break
+                else:
+                    print("SORRY! Wrong input!")  
 
-        #check it is an alphabate or not
-        if not guess.isalpha():
-            print("Invalid input")
-            wrong_guesses = wrong_guesses +1
-            if wrong_guesses <= 5:
-                while True:
-                    h=input("Do you want any hint(Y/N):").lower()
-                    if h == "y":
-                        hint()
-                        break
-                    elif h == "n":
-                        ("Play your own!!")
-                        break
-                    else:
-                        print("SORRY! Wrong input!")  
+                continue
 
-                    continue
+    #check it is a repeated guess or not
+    if guess in guessed_letters:
+        print("OOPS! YOU ALREADY ENTER THIS!")  
+        continue
 
-        #check it is a repeated guess or not
-        if guess in guessed_letters:
-            print("OOPS! YOU ALREADY ENTER THIS!")  
-            continue
-
-        #check it is a right guess or not
-        w = list(word)
+    #check it is a right guess or not
+    w = list(word)
         
-        if guess in w:
-            print("Right guess")
+    if guess in w:
+        print("Right guess")
 
-            # Update display with correct letters
-            for j in range(len(w)):
-                if w[j] == guess:
-                    display[j] = guess
+        # Update display with correct letters
+        for j in range(len(w)):
+            if w[j] == guess:
+                display[j] = guess
                   
-        else:
-            print("OPPS! WRONG GUESS")
-            wrong_guesses = wrong_guesses +1
+    else:
+        print("OPPS! WRONG GUESS")
+        wrong_guesses = wrong_guesses +1
 
-            if wrong_guesses <= 5:
-                while True:
-                    h=input("Do you want any hint(Y/N):").lower()
-                    if h == "y":
-                        hint()
-                        break
-                    elif h == "n":
-                        ("Play your own!!")
-                        break
-                    else:
-                        print("SORRY! Wrong input!")
-                    continue
+        if wrong_guesses <= 5:
+            while True:
+                h=input("Do you want any hint(Y/N):").lower()
+                if h == "y":
+                    hint()
+                    break
+                elif h == "n":
+                    ("Play your own!!")
+                    break
+                else:
+                    print("SORRY! Wrong input!")
+                continue
 
-        # Add to guessed letters 
-        guessed_letters.add(guess) 
+    # Add to guessed letters 
+    guessed_letters.add(guess) 
 
-        # Check if player lost
-        if wrong_guesses == max_wrong:
-            print("GAME OVER! You lost!")
-            print(f"The word is {word}") 
-            continue
-       
-start_game()
+    # Check if player lost
+    if wrong_guesses == max_wrong:
+        print("GAME OVER! You lost!")
+        print(f"The word is {word}") 
