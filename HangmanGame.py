@@ -1,6 +1,66 @@
 #import Library
 import random
 
+# Stick figure stages 
+HANGMAN_STAGES = [
+    """
+       ------
+       |    |
+       |
+       |
+       |
+       |
+    =========""",
+    """
+       ------
+       |    |
+       |    O
+       |
+       |
+       |
+    =========""",
+    """
+       ------
+       |    |
+       |    O
+       |    |
+       |
+       |
+    =========""",
+    """
+       ------
+       |    |
+       |    O
+       |   /|
+       |
+       |
+    =========""",
+    """
+       ------
+       |    |
+       |    O
+       |   /|\\
+       |
+       |
+    =========""",
+    """
+       ------
+       |    |
+       |    O
+       |   /|\\
+       |   /
+       |
+    =========""",
+    """
+       ------
+       |    |
+       |    O
+       |   /|\\
+       |   / \\
+       |
+    ========="""
+]
+
 #lists of words
 words = ["game","hangman","play","indoor","won","loss",   "apple", "banana", "orange", "grape", "mango", "peach", "cherry", "lemon", "melon", "papaya",
     "tiger", "lion", "zebra", "rabbit", "monkey", "panda", "koala", "eagle", "falcon", "shark",
@@ -33,7 +93,7 @@ while wrong_guesses < max_wrong :
     # Check if player won
     if "_" not in display:
         print(" YOU WON!")
-        print(f"The word is {word}") 
+        print(f"The word is {word.capitalize}") 
         break
 
     guess = input("Guess a letter: ").lower()
@@ -62,6 +122,8 @@ while wrong_guesses < max_wrong :
         print("OPPS! WRONG GUESS")
         wrong_guesses = wrong_guesses +1
 
+        print(HANGMAN_STAGES[wrong_guesses])
+
         if wrong_guesses <= 5:
             while True:
                 h=input("Do you want any hint(Y/N):").lower()
@@ -69,7 +131,7 @@ while wrong_guesses < max_wrong :
                    print(" ".join(display))
                    break
                 elif h == "n":
-                    print("Play your own!!")
+                    print("ALL THE BEST")
                     break
                 else:
                     print("SORRY! Wrong input!")
@@ -80,5 +142,6 @@ while wrong_guesses < max_wrong :
 
     # Check if player lost
     if wrong_guesses == max_wrong:
+        print(HANGMAN_STAGES[wrong_guesses])
         print("GAME OVER! You lost!")
-        print(f"The word is {word}")
+        print(f"The word is {word.capitalize}")
