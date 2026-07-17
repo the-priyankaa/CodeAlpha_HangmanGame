@@ -93,7 +93,7 @@ while wrong_guesses < max_wrong :
     # Check if player won
     if "_" not in display:
         print(" YOU WON!")
-        print(f"The word is {word.capitalize}") 
+        print(f"The word is {word.capitalize()}") 
         break
 
     guess = input("Guess a letter: ").lower()
@@ -101,6 +101,7 @@ while wrong_guesses < max_wrong :
     #check it is an alphabate or not
     if not guess.isalpha():
         print("Invalid input")
+        continue
 
     #check it is a repeated guess or not
     if guess in guessed_letters:
@@ -144,4 +145,4 @@ while wrong_guesses < max_wrong :
     if wrong_guesses == max_wrong:
         print(HANGMAN_STAGES[wrong_guesses])
         print("GAME OVER! You lost!")
-        print(f"The word is {word.capitalize}")
+        print(f"The word is {word.capitalize()}")
