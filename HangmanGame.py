@@ -99,7 +99,7 @@ while wrong_guesses < max_wrong :
     guess = input("Guess a letter: ").lower()
 
     #check it is an alphabate or not
-    if not guess.isalpha():
+    if len(guess) != 1 or not guess.isalpha():
         print("Invalid input")
         continue
 
@@ -136,13 +136,13 @@ while wrong_guesses < max_wrong :
                     break
                 else:
                     print("SORRY! Wrong input!")
-                continue
+                
 
-    # Add to guessed letters 
-    guessed_letters.add(guess) 
+# Add to guessed letters 
+guessed_letters.add(guess) 
 
     # Check if player lost
-    if wrong_guesses == max_wrong:
-        print(HANGMAN_STAGES[wrong_guesses])
-        print("GAME OVER! You lost!")
-        print(f"The word is {word.capitalize()}")
+if wrong_guesses == max_wrong:
+    print(HANGMAN_STAGES[wrong_guesses])
+    print("GAME OVER! You lost!")
+    print(f"The word is {word.capitalize()}")
